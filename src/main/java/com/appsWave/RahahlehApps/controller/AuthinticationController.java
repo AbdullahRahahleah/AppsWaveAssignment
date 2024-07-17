@@ -6,6 +6,7 @@ import com.appsWave.RahahlehApps.dto.SignInRequestDTO;
 import com.appsWave.RahahlehApps.dto.SignUpRequestDTO;
 import com.appsWave.RahahlehApps.entities.User;
 import com.appsWave.RahahlehApps.services.AuthnitcationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class AuthinticationController {
     private final AuthnitcationService authnitcationService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody SignUpRequestDTO signUpRequestDTO){
+    public ResponseEntity<User> signup(@Valid @RequestBody SignUpRequestDTO signUpRequestDTO){
         return ResponseEntity.ok(authnitcationService.signUp(signUpRequestDTO));
     }
 
